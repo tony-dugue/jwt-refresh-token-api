@@ -1,3 +1,10 @@
+## Présentation du projet
+***
+
+Création d'un module d'authentification complet d'une API en Nestjs utilisant les JWT avec refresh token intégrant la fonctionnalité de déconnexion et la librairie Passportjs.
+
+Ce projet a été initialisé avec le starter de la CLI [Nest](https://github.com/nestjs/nest).
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
@@ -22,52 +29,77 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+## 🚀 Installation du projet
+***
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- récupération du projet sur Github par HTTPS :
 
-## Installation
-
-```bash
-$ npm install
+```shell script
+$ https://github.com/tony-dugue/jwt-refresh-token-api.git
 ```
 
-## Running the app
-
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+- installer les packages :
+```shell script
+$ yarn install
 ```
 
-## Test
+## Démarrer l'application
+***
+(1) démarrer l'application docker
 
+(2) Démarrer le serveur de développement (à la racine du projet) :
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+$ yarn start #ou $ npm run start
 ```
 
-## Support
+Ou avec le watch mode
+```bash
+$ yarn start:dev #ou $ npm run start:dev
+```
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+(3) dans un 2nd terminal, démarrer la visualisation de la base de données avec prisma :
+```bash
+$ npx prisma studio
+```
 
-## Stay in touch
+### Autres commandes
+
+Voir les containers docker en cours de fonctionnement (si la bdd est bien démarrée) :
+```bash
+$ docker ps
+```
+
+pour redémarrer la base de données (script auto pour tuer la bdd, la redémarrer et appliquer toutes les migrations) :
+```bash
+# après avoir démarrer l'application docker
+$ yarn db:dev:restart
+```
+
+Préparer l'application pour la production :
+```bash
+$ yarn start:prod #ou $ npm run start:prod
+```
+
+Générer une migration manuellement :
+```bash
+$ npx prisma migrate dev
+```
+
+## Ressources utilisées dans le projet
+***
+
+[docker](https://www.docker.com/) <br />
+Base de données : [postgres](https://www.postgresql.org/) <br />
+Authentification middleware pour Nodejs : [passport.js](https://www.passportjs.org/) <br />
+Typescript ORM : [prisma](https://www.prisma.io/) <br />
+
+## Nestjs Support
+***
+
+Nest is an [MIT licensed](LICENSE) open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+
+### Stay in touch
 
 - Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
 - Website - [https://nestjs.com](https://nestjs.com/)
 - Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
