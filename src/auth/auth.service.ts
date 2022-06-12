@@ -54,13 +54,13 @@ export class AuthService {
     });
   }
 
-  async refreshTokens(userId: number, rt: string) {
+  async refreshTokens(userId: number, rt: string): Promise<Tokens> {
     // récupération du user dans la base de données
-    const user = await this.prisma.user.findUnique({
+    const user = await this.prisma.user.findFirst({
       where: { id: userId },
     });
 
-    if (!user) throw new ForbiddenException('Accès refusé!');
+    if (!user || !user.hashedRt) throw new ForbiddenException('Accès refusé!');
 
     // comparaison des hash du refresh token
     const rtMatches = await bcrypt.compare(rt, user.hashedRt);
